@@ -1,8 +1,40 @@
+/* Tailwind layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  height: 100%;
+/* Safer box model everywhere */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Root styles */
+html, body {
+  height: 100%;         /* full viewport height */
+  min-height: 100%;     /* ensures consistent fill */
+  margin: 0;            /* remove default margin */
+  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased; /* smoother text on Mac/iOS */
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff; /* fallback background */
+  color: #111827;         /* neutral text color */
+}
+
+/* Fallback in case Tailwind doesn’t load */
+.no-tailwind & {
+  all: unset;
+  display: block;
+  padding: 1rem;
+  font-family: monospace;
+  background: #fee2e2; /* red-200 */
+  color: #991b1b;      /* red-800 */
+  border: 1px solid #fecaca;
+}
+
+/* Optional: debug helper to visualize layout */
+.debug-outline * {
+  outline: 1px dashed rgba(59, 130, 246, 0.5); /* blue-500 */
 }
